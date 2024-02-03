@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after{ 
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary: 24252544;
+}
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#calc-container{
+    min-width: 28rem;
+    height: 36rem;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    border-radius: .4rem;
+    background-color: var(--primary);
+    backdrop-filter: blur(12px);
+    box-shadow: 2px 2px 8px #0006,
+        4px 4px 16px #0003;
+}
+.grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-rows: minmax(8rem, auto) repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+.span-two{
+    grid-column: span 2;
+}
+#calc-container > button{
+    cursor: pointer;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    background-color: var(--primary);
+}
+#display-container{
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 1rem;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+#display-container #previous-operand{
+    font-size: 1.5rem;
+    color: #fff;
+}
+#display-container #current-operand{
+    font-size: 2.5rem;
+    color: #fff;
+}
