@@ -10,6 +10,7 @@ class Calculator {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operation = undefined;
+        this.previousOperation = undefined;
     }
 
     delete(){
@@ -22,15 +23,44 @@ class Calculator {
             if(currentNumber.includes('.')) return;
             number = '.';
         }
+        if(number === '-'){
+            if(currentNumber.includes('-')) return;
+            number = '-';
+        }
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
+    setNegativeValue(){
+        if(this.previousOperand){
+            if(this.currentOperand !== '' && this.currentOperand !== '-') return;
+            if(this.previousOperation === undefined){
+                this.currentOperand = '';
+                this.previousOperation = this.operation;
+                this.operation = '-';
+            }
+            else{
+                console.log(this.previousOperation)
+                this.currentOperand = '-';
+                this.operation = this.previousOperation;
+                this.previousOperation = undefined;
+            }
+            this.updateDisplay();
+        }
+        if(!this.currentOperand && !this.previousOperand){
+            this.appendNumber('-');
+            this.updateDisplay();
+            return;
+        }
+    }
+
     chooseOperation(operation){
-        if(!this.currentOperand) return;
-        if(this.previousOperand) this.compute();
+        operation === '-' ? this.setNegativeValue() : this.previousOperation = undefined;
+        
+        if(!this.currentOperand && !this.previousOperand || this.currentOperand === '-') return;
+        if(this.previousOperand && this.currentOperand) this.compute();
+        if(this.currentOperand) { this.previousOperand = this.currentOperand; }
 
         this.operation = operation;
-        this.previousOperand = this.currentOperand;
         this.currentOperand = '';
         this.updateDisplay();
     }
@@ -62,6 +92,7 @@ class Calculator {
     }
 
     getDisplayNumber(number){
+        if(number === '-') return number.toString();
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
         const decimalDigits = stringNumber.split('.')[1];
@@ -89,9 +120,9 @@ class Calculator {
         else{
             this.previousOperandTextElement.innerText = '';
         }   
-        console.log('Current Operand: ', this.currentOperand);
-        console.log('Prev Operand: ', this.previousOperand);
-        console.log('Operation: ', this.operation);
+        // console.log('Current Operand: ', this.currentOperand);
+        // console.log('Prev Operand: ', this.previousOperand);
+        // console.log('Operation: ', this.operation);
     }
 
 }
