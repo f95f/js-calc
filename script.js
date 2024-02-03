@@ -17,7 +17,11 @@ class Calculator {
     }
 
     appendNumber(number){
-        if(number === ',' && this.currentOperand.includes(',')) return;
+        const currentNumber = this.currentOperand.toString();
+        if(number === ','){
+            if(currentNumber.includes('.')) return;
+            number = '.';
+        }
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
@@ -85,9 +89,13 @@ class Calculator {
         else{
             this.previousOperandTextElement.innerText = '';
         }   
+        console.log('Current Operand: ', this.currentOperand);
+        console.log('Prev Operand: ', this.previousOperand);
+        console.log('Operation: ', this.operation);
     }
 
 }
+
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');

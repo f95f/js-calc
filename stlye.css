@@ -30,9 +30,9 @@ body {
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-    border-radius: .4rem;
-    background-color: var(--primary);
-    backdrop-filter: blur(12px);
+        border-radius: .4rem;
+        background-color: var(--primary);
+    backdrop-filter: blur(24px);
     box-shadow: 2px 2px 8px #0006,
         4px 4px 16px #0003;
 }
