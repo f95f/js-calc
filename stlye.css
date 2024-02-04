@@ -1,18 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 *,
 *::before,
 *::after{ 
     margin: 0; 
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Julius Sans One', sans-serif;
 }
 :root{
-    --primary: 24252544;
+    --primary: #64665e43;
+    --solid: #c8cc9f;
 }
 body {
     width: 100%;
     height: 100vh;
+    background: url(./img/img1.jpg) no-repeat center center/cover;
 }
-
+button{
+    cursor: pointer;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    background-color: unset;
+}
 #video-background {
     position: fixed;
     top: 0;
@@ -30,44 +40,67 @@ body {
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-        border-radius: .4rem;
-        background-color: var(--primary);
+    border-radius: .4rem;
+    background-color: var(--primary);
     backdrop-filter: blur(24px);
-    box-shadow: 2px 2px 8px #0006,
+    box-shadow: 
+        2px 2px 8px #0006,
         4px 4px 16px #0003;
 }
 .grid{
     display: grid;
     justify-content: center;
     align-content: center;
-    grid-template-rows: minmax(8rem, auto) repeat(5, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: 
+        minmax(8rem, auto)
+        4rem 
+        repeat(1, 1fr);
+}
+#keyboard{
+    grid-column: 1 / -1;
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    margin: 0 1rem;
+    padding-top: 0;
+    border-top: 1px solid var(--primary);
 }
-.span-two{
-    grid-column: span 2;
+#keyboard button{
+    color: var(--solid);
+    opacity: .6;
 }
-#calc-container > button{
-    cursor: pointer;
-    font-size: 2rem;
-    outline: none;
-    border: none;
-    background-color: var(--primary);
-}
-#display-container{
+.row{
     grid-column: 1 / -1;
     display: flex;
+} 
+.display-row{
+    padding: 1rem; 
+    align-items: flex-end;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-end;
-    padding: 1rem;
     word-wrap: break-word;
     word-break: break-all;
 }
-#display-container #previous-operand{
-    font-size: 1.5rem;
-    color: #fff;
+.display-row #previous-operand{
+    font-size: 1.3rem;
+    color: var(--solid);
 }
-#display-container #current-operand{
+.display-row #current-operand{
     font-size: 2.5rem;
-    color: #fff;
+    letter-spacing: 2px;
+    color: var(--solid);
+}
+.options-row{
+    margin: 0 1em;
+    border-top: 1px solid var(--primary);
+    justify-content: space-between;
+    align-items: center;
+}
+.option-button{
+    color: var(--solid);
+    background-color: var(--primary);
+    font-size: 1em;
+    padding: .6em 1em;
+    opacity: .6;
 }

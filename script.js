@@ -1,4 +1,3 @@
-
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
@@ -39,7 +38,6 @@ class Calculator {
                 this.operation = '-';
             }
             else{
-                console.log(this.previousOperation)
                 this.currentOperand = '-';
                 this.operation = this.previousOperation;
                 this.previousOperation = undefined;
@@ -120,11 +118,7 @@ class Calculator {
         else{
             this.previousOperandTextElement.innerText = '';
         }   
-        // console.log('Current Operand: ', this.currentOperand);
-        // console.log('Prev Operand: ', this.previousOperand);
-        // console.log('Operation: ', this.operation);
     }
-
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
