@@ -16,14 +16,7 @@ body {
     height: 100vh;
     background: url(./img/img1.jpg) no-repeat center center/cover;
 }
-button{
-    cursor: pointer;
-    font-size: 2rem;
-    outline: none;
-    border: none;
-    background-color: unset;
-}
-#video-background {
+#video-background{
     position: fixed;
     top: 0;
     left: 0;
@@ -34,18 +27,21 @@ button{
 }
 
 #calc-container{
-    min-width: 28rem;
-    height: 36rem;
+    width: min(100%, 28rem);
+    height: 38rem;
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
     border-radius: .4rem;
     background-color: var(--primary);
-    backdrop-filter: blur(24px);
+    backdrop-filter: blur(18px);
     box-shadow: 
-        2px 2px 8px #0006,
-        4px 4px 16px #0003;
+        2px 2px 8px #0004,
+        4px 4px 16px #0002;
+}
+#calc-container > *{
+    transition: all .3s ease;
 }
 .grid{
     display: grid;
@@ -56,19 +52,6 @@ button{
         minmax(8rem, auto)
         4rem 
         repeat(1, 1fr);
-}
-#keyboard{
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 1rem;
-    margin: 0 1rem;
-    padding-top: 0;
-    border-top: 1px solid var(--primary);
-}
-#keyboard button{
-    color: var(--solid);
-    opacity: .6;
 }
 .row{
     grid-column: 1 / -1;
@@ -90,6 +73,7 @@ button{
     font-size: 2.5rem;
     letter-spacing: 2px;
     color: var(--solid);
+    text-shadow: 4px 4px 8px #0004;
 }
 .options-row{
     margin: 0 1em;
@@ -103,4 +87,60 @@ button{
     font-size: 1em;
     padding: .6em 1em;
     opacity: .6;
+}
+#keyboard{
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: min(10%, 1rem) 0;
+    margin: 0 1rem;
+    border-top: 1px solid var(--primary);
+}
+#keyboard button{
+    position: relative;
+    color: var(--solid);
+    opacity: .6;
+    text-shadow: 2px 2px 4px #0004;
+}
+button{
+    cursor: pointer;
+    font-size: 2rem;
+    outline: none;
+    border: unset;
+    outline: 0px solid var(--primary);
+    background-color: unset;
+    box-shadow: unset;
+    transition: all .3s ease-in-out;
+}
+button:hover{
+    opacity: 1;
+    outline: 1px solid var(--primary);
+    background-color: var(--primary);
+    box-shadow: 2px 2px 4px #0004,
+                4px 4px 12px #0002;
+}
+button:active{
+    filter: brightness(2);
+    transform: scale(.95);
+}
+.vertical-separator::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 1.4rem;
+    position: absolute;
+    bottom: 2.2rem;
+    left: 100%;
+    background-color: var(--primary);
+}
+.horizontal-separator::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 1.4rem;
+    position: relative;
+    top: 1.9rem;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: var(--primary);
 }

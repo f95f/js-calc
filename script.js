@@ -76,7 +76,7 @@ class Calculator {
             case '-':
                 result = operand1 - operand2;
                 break;
-            case 'x':
+            case '×':
                 result = operand1 * operand2;
                 break;
             case '÷':
