@@ -19,7 +19,7 @@ body {
 
 #calc-container{
     width: min(100%, 28rem);
-    height: 38rem;
+    height: 40rem;
     position: absolute;
     top: 50%;
     right: 50%;
@@ -39,7 +39,9 @@ body {
     grid-template-rows: 
         minmax(8rem, auto)
         4rem 
-        repeat(1, 1fr);
+        repeat(1, 1fr)
+        2rem;
+
 }
 .row{
     grid-column: 1 / -1;
@@ -132,4 +134,14 @@ button:active{
     left: 50%;
     transform: translate(-50%);
     background-color: var(--primary);
+}
+.footer-row{
+    text-align: center;
+    color: var(--solid);
+    font-size: .8rem;
+    margin: 0 1rem;
+    padding: .6rem;
+    cursor: default;
+    border-top: 1px solid var(--solid);
+    opacity: .2;
 }
